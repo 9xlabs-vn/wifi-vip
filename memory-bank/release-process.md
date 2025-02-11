@@ -8,7 +8,20 @@
    - Feature branches must follow the pattern: `feature/description-of-change`
    - Release branches should follow the pattern: `release/vX.Y.Z`
 
-2. **Commit Message Rules**
+2. **Pull Request Rules**
+   - PR titles must follow conventional commit format:
+     ```
+     type(scope): description
+     ```
+   - Examples:
+     * `docs(release): update release process and version rules documentation`
+     * `feat(auth): add OAuth2 authentication support`
+     * `fix(api): resolve user session timeout issue`
+   - The PR title should match the primary commit's type and scope
+   - Description should be clear and start with a lowercase letter
+   - Breaking changes should be noted in the PR description
+
+3. **Commit Message Rules**
    - Follow conventional commit format:
      ```
      type(scope): description
@@ -47,7 +60,7 @@
      Refs: #2
      ```
 
-3. **Pre-Release Process**
+4. **Pre-Release Process**
    - Create a feature branch for your changes if one doesn't exist
    - Create a draft release in GitHub before starting the release process
    - Document all changes and updates in the draft release notes
@@ -59,7 +72,7 @@
      * Document new features, changes in architecture, or process updates
      * Ensure AI agents can comprehend the latest state of the project
 
-4. **Version Control**
+5. **Version Control**
    - Follow semantic versioning (MAJOR.MINOR.PATCH)
    - For internal releases, only bump PATCH version (Z)
    - For external releases (client releases), bump MINOR version (Y) and reset PATCH to 0
@@ -68,7 +81,7 @@
    - Create git tags only after final review
    - Tag format: `vX.Y.Z`
 
-5. **Release Steps**
+6. **Release Steps**
    ```bash
    # 1. Ensure you're working from a feature branch
    git checkout -b feature/your-change-description
@@ -87,7 +100,8 @@
    git push origin feature/your-change-description
    
    # 4. Create PR to develop branch
-   # Use GitHub UI to create PR
+   # Use GitHub UI to create PR with conventional commit format title
+   # Example: feat(auth): implement user authentication
 
    # 5. After PR approval and merge to develop
    git checkout develop
@@ -129,7 +143,7 @@
    # After approval, merge PR
    ```
 
-6. **Release Notes Requirements**
+7. **Release Notes Requirements**
    - Group changes by type (Features, Bug Fixes, etc.)
    - Include PR numbers and contributors
    - Document any breaking changes
@@ -138,7 +152,7 @@
    - Clearly mark if it's an internal or external release
    - Reference updated memory bank documentation
 
-7. **Review Process**
+8. **Review Process**
    - Code review must be completed
    - All tests must pass
    - Documentation must be updated
@@ -146,7 +160,7 @@
    - Release notes must be approved
    - Security scan must be clear
 
-8. **Post-Release**
+9. **Post-Release**
    - Deploy to staging environment first
    - Verify deployment
    - Monitor for any issues
@@ -193,6 +207,7 @@
 
 - [ ] Feature branch created for changes
 - [ ] All changes committed with conventional commit format
+- [ ] PR created with conventional commit format title
 - [ ] PR created and approved for feature branch
 - [ ] Version updated in package.json
 - [ ] Memory bank documentation updated
@@ -214,7 +229,7 @@ For critical bugs in production:
 3. Update patch version
 4. Create release notes
 5. Update memory bank if necessary
-6. Create PRs to merge to `main` and `develop`
+6. Create PRs to merge to `main` and `develop` (use conventional commit format for PR titles)
 7. Deploy immediately after testing and approval
 
 ## Additional Notes
@@ -228,3 +243,4 @@ For critical bugs in production:
 - Always create feature branches for changes
 - Keep memory bank documentation up to date for AI assistance
 - Always use conventional commit format for all commits
+- Always use conventional commit format for PR titles
