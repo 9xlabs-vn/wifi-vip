@@ -8,7 +8,46 @@
    - Feature branches must follow the pattern: `feature/description-of-change`
    - Release branches should follow the pattern: `release/vX.Y.Z`
 
-2. **Pre-Release Process**
+2. **Commit Message Rules**
+   - Follow conventional commit format:
+     ```
+     type(scope): description
+
+     [optional body]
+
+     [optional BREAKING CHANGE note]
+
+     [optional footer]
+     ```
+   - Types:
+     * feat: New feature
+     * fix: Bug fix
+     * docs: Documentation changes
+     * style: Code style changes (formatting, etc)
+     * refactor: Code refactoring
+     * test: Adding or updating tests
+     * chore: Maintenance tasks
+   - Scope: Area of codebase (e.g., auth, release, api)
+   - Description: Clear and concise in present tense
+   - Breaking Change: Must be noted with "BREAKING CHANGE:" prefix
+   - Reference related issues/PRs in footer (e.g., "Refs: #123")
+   - Examples:
+     ```
+     docs(release): update process and version docs
+
+     BREAKING CHANGE: New branch protection rules prohibit direct commits to develop/main
+
+     - Enforce branch protection requiring all changes through feature branches
+     - Update version documentation:
+       * Internal releases only bump z digit
+       * External releases bump y digit and reset z
+       * x digit stays synced with external releases
+     - Add memory bank update requirements for AI context
+
+     Refs: #2
+     ```
+
+3. **Pre-Release Process**
    - Create a feature branch for your changes if one doesn't exist
    - Create a draft release in GitHub before starting the release process
    - Document all changes and updates in the draft release notes
@@ -20,7 +59,7 @@
      * Document new features, changes in architecture, or process updates
      * Ensure AI agents can comprehend the latest state of the project
 
-3. **Version Control**
+4. **Version Control**
    - Follow semantic versioning (MAJOR.MINOR.PATCH)
    - For internal releases, only bump PATCH version (Z)
    - For external releases (client releases), bump MINOR version (Y) and reset PATCH to 0
@@ -29,14 +68,20 @@
    - Create git tags only after final review
    - Tag format: `vX.Y.Z`
 
-4. **Release Steps**
+5. **Release Steps**
    ```bash
    # 1. Ensure you're working from a feature branch
    git checkout -b feature/your-change-description
    
-   # 2. Make your changes and commit
+   # 2. Make your changes and commit with conventional format
    git add .
-   git commit -m "feat: your change description"
+   git commit -m "type(scope): description
+
+   [optional body]
+
+   [optional BREAKING CHANGE note]
+
+   Refs: #issue"
    
    # 3. Push feature branch
    git push origin feature/your-change-description
@@ -59,7 +104,11 @@
 
    # 9. Commit version and documentation updates
    git add memory-bank/*.md
-   git commit -am "chore: bump version to X.Y.Z and update documentation"
+   git commit -m "chore(release): bump version to X.Y.Z and update docs
+
+   - Update version to X.Y.Z
+   - Update memory bank documentation
+   - [List other significant changes]"
 
    # 10. Create draft release on GitHub
    # Use GitHub UI to create draft release
@@ -80,7 +129,7 @@
    # After approval, merge PR
    ```
 
-5. **Release Notes Requirements**
+6. **Release Notes Requirements**
    - Group changes by type (Features, Bug Fixes, etc.)
    - Include PR numbers and contributors
    - Document any breaking changes
@@ -89,7 +138,7 @@
    - Clearly mark if it's an internal or external release
    - Reference updated memory bank documentation
 
-6. **Review Process**
+7. **Review Process**
    - Code review must be completed
    - All tests must pass
    - Documentation must be updated
@@ -97,7 +146,7 @@
    - Release notes must be approved
    - Security scan must be clear
 
-7. **Post-Release**
+8. **Post-Release**
    - Deploy to staging environment first
    - Verify deployment
    - Monitor for any issues
@@ -143,7 +192,7 @@
 ## Release Checklist
 
 - [ ] Feature branch created for changes
-- [ ] All changes committed to feature branch
+- [ ] All changes committed with conventional commit format
 - [ ] PR created and approved for feature branch
 - [ ] Version updated in package.json
 - [ ] Memory bank documentation updated
@@ -178,3 +227,4 @@ For critical bugs in production:
 - Never commit directly to develop or main branches
 - Always create feature branches for changes
 - Keep memory bank documentation up to date for AI assistance
+- Always use conventional commit format for all commits
