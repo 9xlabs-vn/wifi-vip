@@ -6,6 +6,7 @@
   - **UI Components:** Shadcn/UI for a cohesive and customizable component library.
   - **Styling:** Tailwind CSS for utility-first, responsive design.
   - **Language:** TypeScript for static typing and improved code quality.
+  - **Form Handling:** React Hook Form with Zod for form validation
 - **Back-End:**
   - **Database ORM:** Prisma for efficient interaction with PostgreSQL.
   - **Authentication:** LuciaAuth for secure authentication mechanisms.
@@ -36,6 +37,9 @@
   - `class-variance-authority` for CSS class management.
   - `clsx` for utility-first styling.
   - `@headlessui/react` for accessible UI components.
+  - `@hookform/resolvers` for form validation integration.
+  - `react-hook-form` for form state management.
+  - `zod` for schema validation.
   - `@types/react` for TypeScript support.
   - `@types/node` for TypeScript support.
   - `postcss` for CSS processing.
@@ -68,6 +72,7 @@
 - **Encryption:** Use HTTPS for all data transmission.
 - **Access Control:** Restrict voucher usage to single devices.
 - **Vulnerability Management:** Regular security audits and updates.
+- **Form Security:** Client-side validation with Zod, server-side validation pending.
 
 **Testing and Quality Assurance:**
 - **Unit Testing:** Write tests using Jest.
@@ -82,59 +87,3 @@
 - **Voucher:** A unique code assigned to a user for Wi-Fi access.
 - **Session Management:** The process of managing user sessions, including creation, extension, and termination.
 - **Payment Gateway:** A service that facilitates electronic transactions, such as Stripe.
-# Technical Context
-
-**Technologies Used:**
-- List all technologies, frameworks, and tools.
-- Document versions and dependencies.
-- Provide rationale for technology choices.
-
-**Development Setup:**
-- Outline steps to set up the development environment.
-- Document required software and configurations.
-- Include instructions for installing dependencies.
-
-**Technical Constraints:**
-- Define any technical limitations.
-- Document platform or environment constraints.
-- List any dependencies or external services.
-
-**Dependencies:**
-- List all external libraries and services.
-- Document version pins and compatibility.
-- Describe any license considerations.
-
-**Infrastructure:**
-- Describe the infrastructure setup.
-- Document cloud services used.
-- Outline deployment environments.
-
-**Build and Release:**
-- Define the build process.
-- Document release pipelines.
-- Outline versioning strategies.
-
-**Monitoring and Maintenance:**
-- Describe monitoring tools and practices.
-- Document maintenance routines.
-- Outline incident response processes.
-
-**Security Practices:**
-- List security measures implemented.
-- Document vulnerability management.
-- Describe compliance with security standards.
-
-**Testing and Quality Assurance:**
-- Define testing strategies.
-- Document test coverage and automation.
-- Outline quality assurance processes.
-
-**Documentation Standards:**
-- Define documentation practices.
-- Document API documentation guidelines.
-- Outline user and developer documentation structure.
-
-**Glossary:**
-- Define key terms and concepts.
-- Provide clarifications for ambiguous terms.
-- Ensure consistent terminology across documentation.
