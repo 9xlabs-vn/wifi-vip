@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -99,7 +101,7 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Section - Features */}
-      <div className="lg:w-1/2 bg-[#0F172A] text-white p-8 lg:p-12 relative overflow-hidden">
+      <div className="lg:w-1/2 dark:bg-[#0F172A] bg-primary/5 text-foreground p-8 lg:p-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,51,122,0.2)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px] animate-[grain_8s_steps(10)_infinite]"></div>
         <div className="relative z-10">
           <div className="flex items-center space-x-3 mb-12">
@@ -156,11 +158,14 @@ export default function AuthPage() {
       </div>
 
       {/* Right Section - Login Form */}
-      <div className="lg:w-1/2 bg-white flex items-center justify-center p-8">
+      <div className="lg:w-1/2 bg-background flex items-center justify-center p-8 relative">
+        <div className="absolute top-4 right-4">
+          <ThemeToggle />
+        </div>
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight">Welcome back</h2>
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm text-muted-foreground mt-2">
               Use demo account - username: user, password: user123
             </p>
           </div>
@@ -182,7 +187,7 @@ export default function AuthPage() {
                             autoCapitalize="none"
                             autoCorrect="off"
                             autoComplete="username"
-                            className="h-11 bg-gray-50 border-0 focus-visible:ring-violet-500"
+                            className="h-11 bg-muted/50 border-0 focus-visible:ring-primary"
                             disabled={isLoading}
                           />
                         </FormControl>
@@ -201,7 +206,7 @@ export default function AuthPage() {
                             {...field}
                             type="password"
                             autoComplete="current-password"
-                            className="h-11 bg-gray-50 border-0 focus-visible:ring-violet-500"
+                            className="h-11 bg-muted/50 border-0 focus-visible:ring-primary"
                             disabled={isLoading}
                           />
                         </FormControl>
@@ -212,7 +217,7 @@ export default function AuthPage() {
                   <div className="flex items-center justify-end">
                     <Button 
                       variant="link" 
-                      className="text-sm text-violet-600 hover:text-violet-700 p-0"
+                      className="text-sm text-primary hover:text-primary/90 p-0"
                       disabled={isLoading}
                     >
                       Forgot password?
@@ -221,7 +226,7 @@ export default function AuthPage() {
                 </CardContent>
                 <div className="space-y-4">
                   <Button 
-                    className="w-full h-11 bg-[#0F172A] hover:bg-slate-800 text-white font-medium transition-all duration-200"
+                    className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all duration-200"
                     type="submit"
                     disabled={isLoading}
                   >
@@ -234,14 +239,14 @@ export default function AuthPage() {
                       <Separator />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                      <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
                     <Button 
                       variant="outline" 
-                      className="bg-white"
+                      className="bg-background hover:bg-muted/50"
                       onClick={() => handleSocialLogin('github')}
                       disabled={isLoading || !!socialLoading}
                     >
@@ -254,7 +259,7 @@ export default function AuthPage() {
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="bg-white"
+                      className="bg-background hover:bg-muted/50"
                       onClick={() => handleSocialLogin('email')}
                       disabled={isLoading || !!socialLoading}
                     >
@@ -273,13 +278,12 @@ export default function AuthPage() {
 
           <p className="text-center text-sm text-gray-500">
             Don&apos;t have an account?{" "}
-            <Button 
-              variant="link" 
-              className="text-violet-600 hover:text-violet-700 font-medium p-0"
-              disabled={isLoading}
+            <Link
+              href="/signup"
+              className="text-violet-600 hover:text-violet-700 font-medium"
             >
               Sign up
-            </Button>
+            </Link>
           </p>
         </div>
       </div>

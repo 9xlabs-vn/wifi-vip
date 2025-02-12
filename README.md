@@ -1,3 +1,56 @@
+# Docker Setup
+
+## Prerequisites
+- Docker
+- Docker Compose
+
+## Running with Docker
+
+1. Build and start the containers:
+```bash
+docker-compose up --build
+```
+
+2. Access the application:
+- Frontend: http://localhost:3000
+- Database: PostgreSQL running on port 5432
+
+## Environment Variables
+The following environment variables are configured in docker-compose.yml:
+
+### Frontend
+- DATABASE_URL: PostgreSQL connection string
+- NODE_ENV: Production environment
+
+### Database
+- POSTGRES_USER: Database user
+- POSTGRES_PASSWORD: Database password
+- POSTGRES_DB: Database name
+
+## Development with Docker
+
+For development with hot-reload:
+```bash
+# Start the development environment
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+## Useful Docker Commands
+
+```bash
+# Stop all containers
+docker-compose down
+
+# View logs
+docker-compose logs -f
+
+# Rebuild containers
+docker-compose up --build
+
+# Remove volumes (will delete database data)
+docker-compose down -v
+```
+
 # WiFi Frontend
 
 A Next.js application with TypeScript, Tailwind CSS, and Prisma integration.
