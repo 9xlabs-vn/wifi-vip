@@ -33,7 +33,7 @@ export async function mockLogin(username: string, password: string): Promise<Use
   return mockUsers.find(user => user.username === username && user.password === password) || null;
 }
 
-export async function mockSocialLogin(provider: 'github' | 'email'): Promise<User | null> {
+export async function mockSocialLogin(provider: 'github' | 'email' | 'facebook'): Promise<User | null> {
   await mockAuthDelay();
   // Simulate successful social login with a provider-specific user
   const socialUser = {

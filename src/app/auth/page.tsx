@@ -12,7 +12,7 @@ import { useToast } from "@/hooks/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { Wifi, Github, Mail, Zap, Shield, Clock, Loader2 } from "lucide-react"
+import { Wifi, Github, Mail, Facebook, Zap, Shield, Clock, Loader2 } from "lucide-react"
 import { mockLogin, mockSocialLogin } from "./mock-data"
 import { AuthError } from "./types"
 
@@ -28,7 +28,7 @@ const formSchema = z.object({
 export default function AuthPage() {
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
-  const [socialLoading, setSocialLoading] = useState<'github' | 'email' | null>(null)
+  const [socialLoading, setSocialLoading] = useState<'github' | 'email' | 'facebook' | null>(null)
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -243,9 +243,9 @@ export default function AuthPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <Button 
-                      variant="outline" 
+                  <div className="grid grid-cols-3 gap-3">
+                    <Button
+                      variant="outline"
                       className="bg-background hover:bg-muted/50"
                       onClick={() => handleSocialLogin('github')}
                       disabled={isLoading || !!socialLoading}
@@ -257,8 +257,21 @@ export default function AuthPage() {
                       )}
                       Github
                     </Button>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
+                      className="bg-background hover:bg-muted/50"
+                      onClick={() => handleSocialLogin('facebook')}
+                      disabled={isLoading || !!socialLoading}
+                    >
+                      {socialLoading === 'facebook' ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : (
+                        <Facebook className="mr-2 h-4 w-4" />
+                      )}
+                      Facebook
+                    </Button>
+                    <Button
+                      variant="outline"
                       className="bg-background hover:bg-muted/50"
                       onClick={() => handleSocialLogin('email')}
                       disabled={isLoading || !!socialLoading}
